@@ -607,8 +607,7 @@ const TOPICS = [
             type: "formula",
             level: "BOTH",
             title: "Standard graph transformations",
-            content: "$f(x)$ — base function\n$f(x) + a$ — vertical translation up $a$ units\n$f(x) - a$ — vertical translation down $a$ units\n$f(x+a)$ — horizontal translation LEFT $a$ units\n$f(x-a)$ — horizontal translation RIGHT $a$ units\n$af(x)$ — vertical stretch, scale factor $a$\n$f(ax)$ — horizontal stretch, scale factor $\\frac{1}{a}$\n$-f(x)$ — reflection in the $x$-axis\n$f(-x)$ — reflection in the $y$-axis"
-          },
+            content: "<div style='line-height:2'>$f(x)$ — base function<br>$f(x) + a$ — vertical translation up $a$ units<br>$f(x) - a$ — vertical translation down $a$ units<br>$f(x+a)$ — horizontal translation LEFT $a$ units<br>$f(x-a)$ — horizontal translation RIGHT $a$ units<br>$af(x)$ — vertical stretch, scale factor $a$<br>$f(ax)$ — horizontal stretch, scale factor $\\frac{1}{a}$<br>$-f(x)$ — reflection in the $x$-axis<br>$f(-x)$ — reflection in the $y$-axis</div>"          },
           {
             type: "note",
             level: "BOTH",
