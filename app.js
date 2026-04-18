@@ -225,7 +225,7 @@ function buildNoteCard(note, idx) {
 
   const bodyContent = note.type === "diagram" && note.src
     ? `<img class="diagram-img" src="${note.src}" alt="${note.title || 'Diagram'}">`
-    : note.type === "diagram" && note.content && /^\s*<svg/i.test(note.content)
+    : note.type === "diagram" && note.content && /^\s*<(svg|img)/i.test(note.content)
     ? note.content
     : escapeForDisplay(note.content || "");
 
