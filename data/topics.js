@@ -329,8 +329,7 @@ const TOPICS = [
             type: "formula",
             level: "HL",
             title: "Modulus and argument formulas",
-            content: `<div>$|z| = r = \\sqrt{a^2 + b^2}$<br><br>$\\arg(z) = \\theta = \\arctan\\left(\\dfrac{b}{a}\\right)$ — check quadrant!<br><br>$z = r(\\cos\\theta + i\\sin\\theta) = re^{i\\theta}$<br><br><span style="opacity:0.6; font-size:0.9em;">Principal argument: $\\theta \\in (-\\pi,\\, \\pi]$</span></div>`
-          },
+            content: `<div>$$|z| = r = \\sqrt{a^2 + b^2}$$$$\\arg(z) = \\theta = \\arctan\\left(\\dfrac{b}{a}\\right) \\text{ — check quadrant!}$$$$z = r(\\cos\\theta + i\\sin\\theta) = re^{i\\theta}$$<span style="opacity:0.6; font-size:0.9em;">Principal argument: $\\theta \\in (-\\pi,\\, \\pi]$</span></div>`          },
         ],
         examples: [
           {
