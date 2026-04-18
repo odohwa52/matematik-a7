@@ -326,11 +326,11 @@ const TOPICS = [
             content: `<img src="images/Argand_Diagram.svg" alt="Argand plane diagram" style="max-width:100%; border-radius:8px;">`
           },
           {
-            type: "formula",
-            level: "HL",
-            title: "Modulus and argument formulas",
-            content: `<div>$$|z| = r = \\sqrt{a^2 + b^2}$$$$\\arg(z) = \\theta = \\arctan\\left(\\dfrac{b}{a}\\right) \\text{ — check quadrant!}$$$$z = r(\\cos\\theta + i\\sin\\theta) = re^{i\\theta}$$<span style="opacity:0.6; font-size:0.9em;">Principal argument: $\\theta \\in (-\\pi,\\, \\pi]$</span></div>`          },
-        ],
+  type: "formula",
+  level: "HL",
+  title: "Modulus and argument formulas",
+  content: "$|z| = r = \\sqrt{a^2 + b^2}$\n\n$\\arg(z) = \\theta = \\arctan\\left(\\dfrac{b}{a}\\right)$ — check quadrant!\n\n$z = r(\\cos\\theta + i\\sin\\theta) = re^{i\\theta}$\n\nPrincipal argument: $\\theta \\in (-\\pi,\\, \\pi]$"
+},
         examples: [
           {
             level: "HL",
