@@ -388,7 +388,7 @@ function renderMath(el) {
 
 function escapeForDisplay(str) {
   if (!str) return "";
-  if (/^\s*<(table|div|span|p|ul|ol|li|h[1-6]|pre|code|img|svg)/i.test(str)) return str;
+  if (/^\s*<(table|div|span|p|ul|ol|li|h[1-6]|pre|code)/i.test(str)) return str;
   const mathRegex = /(\$\$[\s\S]+?\$\$|\$[^$\n]+?\$)/g;
   const parts = [];
   let lastIndex = 0, match;
