@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matematik A7 — IB Math AA HL</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="app">
+
+  <!-- SIDEBAR -->
+  <aside id="sidebar">
+    <div id="sidebar-top">
+      <div id="brand">
+        <span id="brand-name">Matematik<span id="brand-accent">A7</span></span>
+      </div>
+      <div id="search-wrap">
+        <svg id="search-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6.5" cy="6.5" r="4"/><path d="M10 10l3 3"/></svg>
+        <input type="text" id="search-input" placeholder="Search topics, formulas… ( / )">
+        <kbd id="search-clear" style="display:none">esc</kbd>
+      </div>
+    </div>
+
+    <nav id="topic-nav">
+      <!-- built by JS -->
+    </nav>
+
+    <div id="sidebar-footer">
+      <button id="edit-btn" onclick="toggleEditMode()">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11 2l3 3-8 8H3v-3l8-8z"/></svg>
+        <span id="edit-btn-label">Edit mode</span>
+      </button>
+      <button id="print-btn" onclick="printTopic()">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="6" width="10" height="7" rx="1"/><path d="M5 6V3h6v3"/><path d="M5 11h6"/><path d="M5 13h4"/></svg>
+      </button>
+      <div id="kbd-hint">
+        <span>?</span> shortcuts
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main id="main">
+
+    <!-- HEADER -->
+    <header id="main-header">
+      <div id="header-breadcrumb">
+        <span id="header-topic-num"></span>
+        <span id="header-topic-title">Select a topic</span>
+      </div>
+      <div id="header-badges">
+        <span class="badge badge-sl" id="badge-sl">SL</span>
+        <span class="badge badge-hl" id="badge-hl">HL</span>
+      </div>
+    </header>
+
+    <!-- TABS -->
+    <div id="tab-bar">
+      <button class="tab active" data-tab="notes" onclick="switchTab('notes')">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 4h10M3 8h8M3 12h6"/></svg>
+        Notes
+      </button>
+      <button class="tab" data-tab="examples" onclick="switchTab('examples')">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="5"/><path d="M8 6v2l1.5 1.5"/></svg>
+        Worked examples
+      </button>
+      <button class="tab" data-tab="calculator" onclick="switchTab('calculator')">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="12" height="12" rx="2"/><path d="M5 5h6M5 8h2M9 8h2M5 11h2M9 11h2"/></svg>
+        Calculator
+      </button>
+
+      <div id="tab-indicator"></div>
+    </div>
+
+    <!-- CONTENT PANELS -->
+    <div id="panels">
+
+      <div id="panel-notes" class="panel active">
+        <div id="empty-state">
+          <div id="empty-graphic">
+            <svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1"><rect x="15" y="10" width="50" height="60" rx="4" opacity="0.15"/><path d="M25 25h30M25 35h24M25 45h18M25 55h22" opacity="0.2"/></svg>
+          </div>
+          <p id="empty-title">Pick a topic</p>
+          <p id="empty-sub">Select any subtopic from the sidebar to view notes</p>
+          <div id="empty-keys">
+            <span class="key-hint"><kbd>[</kbd><kbd>]</kbd> navigate topics</span>
+            <span class="key-hint"><kbd>/</kbd> search</span>
+            <span class="key-hint"><kbd>1</kbd><kbd>2</kbd><kbd>3</kbd> switch tabs</span>
+          </div>
+        </div>
+        <div id="notes-content" style="display:none"></div>
+      </div>
+
+      <div id="panel-examples" class="panel">
+        <div id="examples-content"></div>
+      </div>
+
+      <div id="panel-calculator" class="panel">
+        <div id="calc-toggle-bar">
+          <button class="calc-toggle active" id="calc-sci-btn" onclick="switchCalc('scientific')">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="12" height="12" rx="2"/><rect x="4" y="4" width="8" height="3" rx="0.5"/><path d="M4 9h2M7 9h2M11 9h0M4 12h2M7 12h2M11 12h0"/></svg>
+            Scientific
+          </button>
+          <button class="calc-toggle" id="calc-graph-btn" onclick="switchCalc('graphing')">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="1" width="14" height="14" rx="2"/><path d="M1 11 5 7l3 3 4-6 3 3"/></svg>
+            Graphing (Desmos)
+          </button>
+          <button class="calc-toggle" id="calc-gdc-btn" onclick="switchCalc('gdc')">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="1" width="12" height="14" rx="2"/><rect x="4" y="3" width="8" height="2.5" rx="0.5"/><path d="M4 8h2M7 8h2M11 8h1M4 11h2M7 11h2M11 11h1"/></svg>
+            GDC guide
+          </button>
+        </div>
+        <div id="calc-scientific"><!-- built by calculator.js --></div>
+        <div id="calc-graphing" style="display:none">
+          <iframe id="desmos-frame" src="https://www.desmos.com/calculator" title="Desmos graphing calculator"></iframe>
+        </div>
+        <div id="calc-gdc" style="display:none"><!-- built by calculator.js --></div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<!-- SEARCH OVERLAY -->
+<div id="search-overlay" style="display:none">
+  <div id="search-modal">
+    <div id="search-modal-top">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6.5" cy="6.5" r="4"/><path d="M10 10l3 3"/></svg>
+      <input type="text" id="search-modal-input" placeholder="Search formulas, topics, keywords…" autocomplete="off">
+      <kbd onclick="closeSearch()">esc</kbd>
+    </div>
+    <div id="search-results"></div>
+    <div id="search-footer">
+      <span class="key-hint"><kbd>↑</kbd><kbd>↓</kbd> navigate</span>
+      <span class="key-hint"><kbd>↵</kbd> open</span>
+      <span class="key-hint"><kbd>esc</kbd> close</span>
+    </div>
+  </div>
+</div>
+
+<!-- EDIT MODE OVERLAY -->
+<div id="edit-overlay" style="display:none">
+  <div id="edit-modal">
+    <div id="edit-modal-header">
+      <span>Edit mode</span>
+      <button onclick="closeEditModal()">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3l10 10M13 3L3 13"/></svg>
+      </button>
+    </div>
+    <p>Enter password to unlock editing.</p>
+    <input type="password" id="edit-password" placeholder="Password" autocomplete="off">
+    <div id="edit-modal-footer">
+      <button onclick="closeEditModal()">Cancel</button>
+      <button id="edit-confirm-btn" onclick="confirmEditMode()">Unlock</button>
+    </div>
+    <p id="edit-error" style="display:none">Incorrect password.</p>
+  </div>
+</div>
+
+<!-- SHORTCUTS OVERLAY -->
+<div id="shortcuts-overlay" style="display:none" onclick="closeShortcuts()">
+  <div id="shortcuts-modal" onclick="event.stopPropagation()">
+    <div id="shortcuts-header">Keyboard shortcuts</div>
+    <div class="shortcut-row"><kbd>/</kbd><span>Open search</span></div>
+    <div class="shortcut-row"><kbd>1</kbd><span>Notes tab</span></div>
+    <div class="shortcut-row"><kbd>2</kbd><span>Worked examples tab</span></div>
+    <div class="shortcut-row"><kbd>3</kbd><span>Calculator tab</span></div>
+    <div class="shortcut-row"><kbd>r</kbd><span>Toggle reviewed</span></div>
+    <div class="shortcut-row"><kbd>[</kbd><span>Previous subtopic</span></div>
+    <div class="shortcut-row"><kbd>]</kbd><span>Next subtopic</span></div>
+    <div class="shortcut-row"><kbd>Esc</kbd><span>Close overlays</span></div>
+    <div class="shortcut-row"><kbd>?</kbd><span>Toggle this panel</span></div>
+    <button onclick="closeShortcuts()" style="margin-top:16px">Close</button>
+  </div>
+</div>
+
+<script type="importmap">{"imports":{"animejs":"https://cdn.jsdelivr.net/npm/animejs@4/src/index.js","animejs/":"https://cdn.jsdelivr.net/npm/animejs@4/src/"}}</script>
+<script src="data/topics.js"></script>
+<script src="calculator.js"></script>
+<script src="search.js"></script>
+<script src="app.js"></script>
+<script type="module" src="animations.js"></script>
+</body>
+</html>
