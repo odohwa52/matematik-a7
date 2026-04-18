@@ -383,6 +383,9 @@ function renderMath(el) {
       throwOnError: false,
       strict: false
     });
+  } else {
+    // KaTeX not ready yet, retry after a short delay
+    setTimeout(() => renderMath(el), 100);
   }
 }
 
