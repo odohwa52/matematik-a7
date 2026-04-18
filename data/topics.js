@@ -323,28 +323,13 @@ const TOPICS = [
             type: "diagram",
             level: "HL",
             title: "Argand plane — modulus and argument",
-            content: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 290" style="max-width:100%;height:auto;display:block;margin:0 auto;font-family:'Space Mono',monospace">
-  <line x1="30" y1="160" x2="330" y2="160" stroke="currentColor" stroke-width="1" opacity="0.25"/>
-  <line x1="180" y1="270" x2="180" y2="20" stroke="currentColor" stroke-width="1" opacity="0.25"/>
-  <text x="334" y="164" font-size="10" fill="currentColor" opacity="0.4">Re</text>
-  <text x="176" y="17" font-size="10" fill="currentColor" opacity="0.4">Im</text>
-  <line x1="180" y1="160" x2="290" y2="75" stroke="#1a6ef5" stroke-width="2"/>
-  <circle cx="290" cy="75" r="5" fill="#1a6ef5"/>
-  <line x1="290" y1="75" x2="290" y2="160" stroke="currentColor" stroke-width="0.8" stroke-dasharray="4,3" opacity="0.35"/>
-  <line x1="180" y1="75" x2="290" y2="75" stroke="currentColor" stroke-width="0.8" stroke-dasharray="4,3" opacity="0.35"/>
-  <path d="M215,160 A38,38 0 0,0 204,131" fill="none" stroke="#0e9e74" stroke-width="1.5"/>
-  <text x="300" y="70" font-size="11" fill="#1a6ef5" font-weight="700">z = a+bi</text>
-  <text x="237" y="175" font-size="10" fill="currentColor" opacity="0.6">a</text>
-  <text x="295" y="122" font-size="10" fill="currentColor" opacity="0.6">b</text>
-  <text x="218" y="143" font-size="11" fill="#0e9e74" font-weight="700">&#952;</text>
-  <text x="190" y="118" font-size="10" fill="#1a6ef5">|z|=r</text>
-  <text x="173" y="178" font-size="9" fill="currentColor" opacity="0.4">O</text>
-  <rect x="15" y="205" width="330" height="72" rx="6" fill="currentColor" fill-opacity="0.03" stroke="currentColor" stroke-opacity="0.1" stroke-width="1"/>
-  <text x="180" y="225" font-size="9.5" fill="currentColor" opacity="0.65" text-anchor="middle">|z| = r = &#8730;(a&#178;+b&#178;)</text>
-  <text x="180" y="242" font-size="9.5" fill="currentColor" opacity="0.65" text-anchor="middle">arg(z) = &#952; = arctan(b/a) — check quadrant!</text>
-  <text x="180" y="259" font-size="9.5" fill="currentColor" opacity="0.65" text-anchor="middle">z = r(cos&#952; + i sin&#952;) = re^(i&#952;)</text>
-  <text x="180" y="276" font-size="9" fill="currentColor" opacity="0.35" text-anchor="middle">principal argument: &#952; &#8712; (&#8722;&#960;, &#960;]</text>
-</svg>`
+            content: `<img src="images/Argand_Diagram.svg" alt="Argand plane diagram" style="max-width:100%; border-radius:8px;">`
+          },
+          {
+            type: "formula",
+            level: "HL",
+            title: "Modulus and argument formulas",
+            content: `<div>$|z| = r = \\sqrt{a^2 + b^2}$<br><br>$\\arg(z) = \\theta = \\arctan\\left(\\dfrac{b}{a}\\right)$ — check quadrant!<br><br>$z = r(\\cos\\theta + i\\sin\\theta) = re^{i\\theta}$<br><br><span style="opacity:0.6; font-size:0.9em;">Principal argument: $\\theta \\in (-\\pi,\\, \\pi]$</span></div>`
           },
         ],
         examples: [
